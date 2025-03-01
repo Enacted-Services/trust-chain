@@ -1,0 +1,35 @@
+#!/bin/bash -e
+
+function __usage() {
+    echo "Usage: $(basename $0) PKCS11_CERT_URI PKCS11_KEY_URI" >&2
+    exit 1
+}
+
+if [[ $# -ne 2 ]]; then
+    __usage
+fi
+
+git ls-files --stage \
+    | awk '{print $4;}' \
+    | grep -vE '^SHA512SUMS(\.p7s)?$' \
+    | sort -V \
+    | tr '\n' '\0' \
+    | xargs -0 sha512sum \
+    > SHA512SUMS
+
+git add SHA512SUMS
+
+openssl cms -sign \
+    -provider pkcs11 \
+    -provider default \
+    -signer "$1" \
+    -inkey "$2" \
+    -in SHA512SUMS \
+    -out SHA512SUMS.p7s \
+    -nodetach
+
+git add SHA512SUMS.p7s
+
+echo "SHA512SUMS and SHA512SUMS.p7s regenerated."
+echo "Please verify the signature with:"
+echo "openssl cms -verify -CAfile data/trusted-ca.pem -in SHA512SUMS.p7s -content SHA512SUMS"
