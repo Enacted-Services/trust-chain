@@ -110,3 +110,13 @@ Size:             4096
 Created:          2025-02-10
 Expires:          2027-02-10
 ```
+
+## Certificate Authorities
+
+Enacted Services operates a private Root and Intermediate CA for issuing certificates internally
+and amongst its partners. The Root CA is kept offline and is only used to sign the Intermediate CA
+and CRLs. The Intermediate CA is used to sign all other certificates and CRLs, and is generally
+kept offline as well.
+
+You can find the Root CA at [data/ca/Enacted-RootCA.pem](data/ca/Enacted-RootCA.pem) and the
+Intermediate CA at [data/ca/Enacted-IntermediateCA.pem](data/ca/Enacted-IntermediateCA.pem).
