@@ -55,3 +55,58 @@ a public CA and which required verification of a government-issued ID to obtain.
 also be signed by the trusted party's GPG key and they must have vigilant mode enabled on their
 GitHub account. These details are verified by the other trusted parties before new parties are
 added to the repository, and are audited regularly thereafter.
+
+## GPG (PGP) Keys
+
+The primary GPG key for Enacted Services can be found at
+[data/gpg/46D5CAC9E4839DBD.asc](data/gpg/46D5CAC9E4839DBD.asc)
+
+It is also available on the following keyservers:
+- https://keyserver.ubuntu.com
+- https://keys.openpgp.org
+- https://pgp.mit.edu
+
+The Certify Key is kept offline, and instead Signing, Encryption, and Authentication subkeys are
+used for day-to-day operations. The fingerprints of each key are and other relevant information
+can be found below.
+
+**Certify Key:**
+```
+Key ID:           46D5CAC9E4839DBD
+UID:              Enacted Services <root@enacted.services>
+Fingerprint:      C8EA 2EA2 893A 265F 6952  CE4B 46D5 CAC9 E483 9DBD
+Type:             RSA
+Size:             4096
+Created:          2025-02-10
+Expires:          Never
+```
+
+**Signing Key:**
+```
+Subkey ID:        11001CFFBA67FEEF
+Fingerprint:      45AC 7BF5 9663 B36E 533F  5534 1100 1CFF BA67 FEEF
+Type:             RSA
+Size:             4096
+Created:          2025-02-10
+Expires:          2027-02-10
+```
+
+**Encryption Key:**
+```
+Subkey ID:        FF2008283C67BD1C
+Fingerprint:      1A9D 5BD1 21EE 9598 8C16  ABE8 FF20 0828 3C67 BD1C
+Type:             RSA
+Size:             4096
+Created:          2025-02-10
+Expires:          2027-02-10
+```
+
+**Authentication Key:**
+```
+Subkey ID:        BA80836A7B9C19DC
+Fingerprint:      F47B D88C 2DAD B6CC 6650  1AC8 BA80 836A 7B9C 19DC
+Type:             RSA
+Size:             4096
+Created:          2025-02-10
+Expires:          2027-02-10
+```
