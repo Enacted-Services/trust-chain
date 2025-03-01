@@ -120,3 +120,12 @@ kept offline as well.
 
 You can find the Root CA at [data/ca/Enacted-RootCA.pem](data/ca/Enacted-RootCA.pem) and the
 Intermediate CA at [data/ca/Enacted-IntermediateCA.pem](data/ca/Enacted-IntermediateCA.pem).
+
+## Secure Boot
+
+Enacted Services uses a private Secure Boot chain on its systems. This includes a Platform Key,
+Key Exchange Key, and organizational key for inclusion in the Secure Boot database. The
+Platform Key is used to sign the Key Exchange Key. The Key Exchange Key is used to sign the
+organizational key, as is the normal practice.
+
+Pre-generated auth files for import into UEFI firmware are available at [data/secureboot](data/secureboot).
